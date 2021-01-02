@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(6,10): warning C4013: 'open' undefined; assuming extern returning int
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(6,40): warning C4047: '=': 'FILE *' differs in levels of indirection from 'int'
+  ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

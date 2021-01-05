@@ -142,7 +142,10 @@
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Concorrentes.c" />
+    <ClCompile Include="Etapas.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Provas.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

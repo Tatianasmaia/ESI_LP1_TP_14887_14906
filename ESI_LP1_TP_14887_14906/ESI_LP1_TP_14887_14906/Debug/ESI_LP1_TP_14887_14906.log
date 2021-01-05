@@ -1,10 +1,2 @@
 ﻿  main.c
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(27,18): warning C4013: 'strtok' undefined; assuming extern returning int
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(27,30): warning C4047: '=': 'char *' differs in levels of indirection from 'int'
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(33,30): warning C4047: '=': 'char *' differs in levels of indirection from 'int'
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(36,21): warning C4013: 'strdup' undefined; assuming extern returning int
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(36,28): warning C4047: '=': 'char *' differs in levels of indirection from 'int'
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(43,10): warning C4013: 'strcpy' undefined; assuming extern returning int
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(45,33): warning C4013: 'atoi' undefined; assuming extern returning int
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(45,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

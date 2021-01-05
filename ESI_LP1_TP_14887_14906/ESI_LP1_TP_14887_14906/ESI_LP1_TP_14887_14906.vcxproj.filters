@@ -23,5 +23,14 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Etapas.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Provas.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Concorrentes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

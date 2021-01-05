@@ -24,7 +24,18 @@ typedef struct prova {
 	char etapa1[50];
 	char etapa2[50];
 	int tempo;
+
+}Prova;
+
+/*Estrutura para guardar o número de etapas e concorrentes da prova*/
+typedef struct detalhesProva {
+
+	
 	int nEtapas;
 	int nConcorrentes;
 
-}Prova;
+}DetalhesProva;
+
+void leFicheiroConcorrentes();
+void leFicheiroEtapas();
+int leFicheiroProvas();

@@ -38,7 +38,66 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 }
 
-int CalculaNrConcorrentes(Prova provas[]) {
+//Concorrentes com prova válida (>0)
+int NrConcorrentesProvaValida(Prova provas[], int idProvasValidas[]) {
+
+	int j = 0;
+	for (int i = 0; i < 6; i++) {
+
+		//for (int j = 0; j < 1; j++) {
+
+			if (provas[i].idConcorrente != idProvasValidas[j]) {
+				idProvasValidas[j] = provas[i].idConcorrente;
+				
+				j++;
+			}
+		
+	}
+	
+
+	for (int i = 0; i < j; i++) {
+			printf("%d", idProvasValidas[j]);
+	}
 
 	
+
+
+
+
+
+
+
+
+	/*int k = 0;
+
+	
+
+	for (int i = 0; i < 10; i++) {
+
+
+		if (provas[i].tempo > 0) {
+
+
+			for (int j = 0; j < 2; j++) {
+
+				if (provas[i].idConcorrente != idProvasValidas[j]) {
+					idProvasValidas[j] = provas[i].idConcorrente;
+					k++;
+				}
+			}
+
+			
+
+		}
+		else {
+			printf("prova invalida %d", provas[i].idConcorrente);
+		}
+	}
+	
+
+
+	for (int i = 0; i < k; i++) {
+		printf("%d \n", idProvasValidas[i]);
+	}*/
+
 }

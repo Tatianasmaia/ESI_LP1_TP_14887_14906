@@ -1,2 +1,5 @@
-﻿  main.c
+﻿  Provas.c
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(26,9): warning C4013: 'strcpy' undefined; assuming extern returning int
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(39): warning C4716: 'leFicheiroProvas': must return a value
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(113): warning C4716: 'NrConcorrentesProvaValida': must return a value
   ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

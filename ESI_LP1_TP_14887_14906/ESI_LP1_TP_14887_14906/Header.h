@@ -11,19 +11,27 @@ typedef struct concorrente {
 /*Estrutura para guardar a informação das etapas*/
 typedef struct etapa {
 
-	char inicio[50];
+	/*char inicio[50];
 	char fim[50];
-	float distancia;
+	float distancia;*/
+
+	int idConcorrente;
+	char etapa1[50];
+	char etapa2[50];
+	int tempo;
 
 }Etapa;
 
 /*Estrutura para guardar a informação de uma prova*/
 typedef struct prova {
 
-	int idConcorrente;
+	/*int idConcorrente;
 	char etapa1[50];
 	char etapa2[50];
-	int tempo;
+	int tempo;*/
+	int idConcorrente;
+
+	Etapa etapas[3];
 
 }Prova;
 
@@ -35,6 +43,7 @@ typedef struct detalhesProva {
 	int nConcorrentes;
 
 }DetalhesProva;
+
 
 void leFicheiroConcorrentes();
 void leFicheiroEtapas();

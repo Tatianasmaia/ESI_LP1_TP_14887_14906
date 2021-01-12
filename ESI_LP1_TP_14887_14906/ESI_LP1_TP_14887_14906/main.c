@@ -15,7 +15,7 @@ void main() {
    /* leFicheiroConcorrentes(concorrentes);
     leFicheiroEtapas(etapas);*/
     leFicheiroProvas(provas, detalhes);
-    NrConcorrentesProvaValida(provas, idProvasValidas);
+   /* NrConcorrentesProvaValida(provas, idProvasValidas);*/
 
     //nEtapas = detalhes[0].nEtapas;
     //nConcorrentes = detalhes[0].nConcorrentes;

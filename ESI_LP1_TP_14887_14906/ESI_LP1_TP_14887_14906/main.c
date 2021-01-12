@@ -9,18 +9,24 @@ void main() {
     Concorrente concorrentes[10];
     Prova provas[10];
     int nEtapas = 0, nConcorrentes = 0;
-    DetalhesProva detalhes[1];
-    //int idProvasValidas[30] = { 0 };
+    DetalhesProva detalhes[1] = { 0 };
+    Prova provasValidas[30] = { 0 };
+
+    
 
     //Funções para ler os três ficheiros
-    leFicheiroConcorrentes(concorrentes);
-    leFicheiroEtapas(etapas);
+    //leFicheiroConcorrentes(concorrentes);
+    //leFicheiroEtapas(etapas);
     leFicheiroProvas(provas, detalhes);
+    
+    nEtapas = detalhes[0].nEtapas;
+    nConcorrentes = detalhes[0].nConcorrentes;
 
-    /*NrConcorrentesProvaValida(provas, idProvasValidas);*/
+    ProvasValida(provas, provasValidas, nConcorrentes, nEtapas);
 
-    //nEtapas = detalhes[0].nEtapas;
-    //nConcorrentes = detalhes[0].nConcorrentes;
+    ListagemTempoProva(provasValidas, nEtapas, nConcorrentes);
+
+    
 
     //printf("%d\n", nEtapas);
     //printf("nr de conc : %d", nConcorrentes); //Exercício 2

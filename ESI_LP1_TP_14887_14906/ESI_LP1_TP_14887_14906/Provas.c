@@ -4,7 +4,7 @@
 
 
 /*Função que lê o ficheiro com a informação das provas*/
-int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
+void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 	int nEtapas = 0, nConcorrentes = 0;
 	char etapa1[50], etapa2[50];
@@ -37,7 +37,7 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 				strcpy(novaEtapa.etapa2, etapa2);
 				novaEtapa.tempo = tempo;
 
-				provas[i].etapas[j] = novaEtapa;
+				provas[i-1].etapas[j] = novaEtapa;
 
 				j++;
 			}
@@ -52,33 +52,85 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 	fclose(f);
 
-	for (int i = 1; i < nEtapas; i++) {
+	for (int i = 0; i < 2; i++) {
 
 		for (int k = 0; k < nEtapas; k++) {
 			printf("%d %s %s %d\n", provas[i].etapas->idConcorrente, provas[i].etapas[k].etapa1, provas[i].etapas[k].etapa2, provas[i].etapas[k].tempo);
 		}
 	}
-
 }
-//
-////Concorrentes com prova válida (>0)
-//int NrConcorrentesProvaValida(Prova provas[], int idProvasValidas[]) {
-//
-//	int j = 0;
-//	for (int i = 0; i < 6; i++) {
-//
-//		//for (int j = 0; j < 1; j++) {
-//
-//			if (provas[i].idConcorrente != idProvasValidas) {
-//				idProvasValidas[j] = provas[i].idConcorrente;
-//				
-//				j++;
-//			}
-//		
-//	}
-//	
-//
-//	for (int i = 0; i < j; i++) {
-//			printf("%d", idProvasValidas[j]);
-//	}
-//
+
+//Concorrentes com prova válida (>0)
+void ProvasValida(Prova provas[], Prova provasValidas[], int nConcorrentes, int nEtapas) {
+
+
+	int k = 0, z = 0;
+	int nProvasV = 0;
+	Etapa novaEtapa;
+
+
+	for (int i = 0 ; i < nConcorrentes; i++) {
+
+		if (provas[i].etapas[i].idConcorrente == i+1) {
+
+		
+			for (int j = 0; j < nEtapas; j++) {
+
+				if (provas[i].etapas[j].tempo > 0) {
+					k++;
+					
+				}
+			}
+		}
+
+		if (k == nEtapas) {
+
+			
+				for (int j = 0; j < nEtapas; j++) {
+
+					
+					novaEtapa.idConcorrente = provas->etapas[j].idConcorrente;
+					strcpy(novaEtapa.etapa1, provas->etapas[j].etapa1);
+					strcpy(novaEtapa.etapa2, provas->etapas[j].etapa2);
+					novaEtapa.tempo = provas->etapas[j].tempo;
+
+					provasValidas[z].etapas[j] = novaEtapa;
+
+					
+				}
+				z++;
+			
+			
+
+			nProvasV++;
+		}
+
+		k = 0;
+	}
+
+	printf("Numero de concorentes com uma prova valida: %d\n", nProvasV);
+}
+
+//Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida;
+void ListagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
+
+	int tempoTotal = 0, i = 0;
+
+	//if (provasValidas[i].etapas->idConcorrente == i + 1) {
+
+		for ( i = 0; i < (nConcorrentes*nEtapas); i++) {
+
+			for (int j = 0; j < nEtapas; j++) {
+
+				tempoTotal += provasValidas[i].etapas[j].tempo;
+
+			}
+			
+			provasValidas[i].tempoTotal = tempoTotal;
+			tempoTotal = 0;
+			printf("%d\n", provasValidas[i].tempoTotal);
+			i += nEtapas;
+		}
+
+	//}
+}

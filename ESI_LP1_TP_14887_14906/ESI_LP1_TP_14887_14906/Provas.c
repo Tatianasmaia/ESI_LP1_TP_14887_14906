@@ -2,6 +2,7 @@
 #include "Header.h"
 #pragma warning(disable : 4996)
 
+
 /*Função que lê o ficheiro com a informação das provas*/
 int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
@@ -26,7 +27,7 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 		while (!feof(f)) {
 
 
-			fscanf(f, "%d;%[^;];%[^;];%d\n", &idConcorrente, &etapa1, &etapa2, &tempo);
+			fscanf(f, "%d;%[^;];%[^;];%d\n", &idConcorrente, etapa1, etapa2, &tempo);
 
 			if (idConcorrente == i)
 			{
@@ -39,16 +40,13 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 				provas[i].etapas[j] = novaEtapa;
 
 				j++;
-
 			}
 			
-
 		}
 
 		j = 0;
 		
 		fseek(f, 2, SEEK_SET);
-
 	}
 
 
@@ -84,45 +82,3 @@ int leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 //			printf("%d", idProvasValidas[j]);
 //	}
 //
-	
-
-
-
-
-
-
-
-
-	/*int k = 0;
-
-	
-
-	for (int i = 0; i < 10; i++) {
-
-
-		if (provas[i].tempo > 0) {
-
-
-			for (int j = 0; j < 2; j++) {
-
-				if (provas[i].idConcorrente != idProvasValidas[j]) {
-					idProvasValidas[j] = provas[i].idConcorrente;
-					k++;
-				}
-			}
-
-			
-
-		}
-		else {
-			printf("prova invalida %d", provas[i].idConcorrente);
-		}
-	}
-	
-
-
-	for (int i = 0; i < k; i++) {
-		printf("%d \n", idProvasValidas[i]);
-	}*/
-//
-//}

@@ -1,4 +1,4 @@
 ﻿  Provas.c
-C:\Users\HP\Desktop\ano2021\LP1\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(35,11): warning C4013: 'strcpy' undefined; assuming extern returning int
-C:\Users\HP\Desktop\ano2021\LP1\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(64): warning C4716: 'leFicheiroProvas': must return a value
-  ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\HP\Desktop\ano2021\LP1\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(36,11): warning C4013: 'strcpy' undefined; assuming extern returning int
+C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Provas.c(62): warning C4716: 'leFicheiroProvas': must return a value
+  ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

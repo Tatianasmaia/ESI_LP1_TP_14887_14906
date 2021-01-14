@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "Header.h"
 #pragma warning(disable : 4996)
 
@@ -23,15 +24,12 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 	for (int i = 1; i <= nConcorrentes; i++)
 	{
 
-
 		while (!feof(f)) {
-
 
 			fscanf(f, "%d;%[^;];%[^;];%d\n", &idConcorrente, etapa1, etapa2, &tempo);
 
 			if (idConcorrente == i)
 			{
-				
 				novaEtapa.idConcorrente = idConcorrente;
 				strcpy(novaEtapa.etapa1, etapa1);
 				strcpy(novaEtapa.etapa2, etapa2);
@@ -41,38 +39,34 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 				j++;
 			}
-			
 		}
-
 		j = 0;
 		
 		fseek(f, 2, SEEK_SET);
 	}
 
-
 	fclose(f);
 
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < nConcorrentes; i++) {
 
 		for (int k = 0; k < nEtapas; k++) {
-			printf("%d %s %s %d\n", provas[i].etapas->idConcorrente, provas[i].etapas[k].etapa1, provas[i].etapas[k].etapa2, provas[i].etapas[k].tempo);
+			printf("Aqui%d %s %s %d\n", provas[i].etapas->idConcorrente, provas[i].etapas[k].etapa1, provas[i].etapas[k].etapa2, provas[i].etapas[k].tempo);
 		}
 	}
 }
 
-//Concorrentes com prova válida (>0)
-void ProvasValida(Prova provas[], Prova provasValidas[], int nConcorrentes, int nEtapas) {
+//Concorrentes com prova válida (tempo > 0)
+int verificarProvasValidas(Prova provas[], Prova provasValidas[], int nConcorrentesT, int nEtapas) {
 
 
-	int k = 0, z = 0;
-	int nProvasV = 0;
+	int k = 0, z = 0, nProvasV = 0;
 	Etapa novaEtapa;
 
 
-	for (int i = 0 ; i < nConcorrentes; i++) {
+	for (int i = 0 ; i < nConcorrentesT; i++) {
 
+		//Calcula se todas as provas são válidas
 		if (provas[i].etapas[i].idConcorrente == i+1) {
-
 		
 			for (int j = 0; j < nEtapas; j++) {
 
@@ -83,25 +77,22 @@ void ProvasValida(Prova provas[], Prova provasValidas[], int nConcorrentes, int 
 			}
 		}
 
+		//Se todas as etapas forem válidas
 		if (k == nEtapas) {
-
 			
 				for (int j = 0; j < nEtapas; j++) {
 
 					
-					novaEtapa.idConcorrente = provas->etapas[j].idConcorrente;
-					strcpy(novaEtapa.etapa1, provas->etapas[j].etapa1);
-					strcpy(novaEtapa.etapa2, provas->etapas[j].etapa2);
-					novaEtapa.tempo = provas->etapas[j].tempo;
+					novaEtapa.idConcorrente = provas[i].etapas[j].idConcorrente;
+					strcpy(novaEtapa.etapa1, provas[i].etapas[j].etapa1);
+					strcpy(novaEtapa.etapa2, provas[i].etapas[j].etapa2);
+					novaEtapa.tempo = provas[i].etapas[j].tempo;
 
 					provasValidas[z].etapas[j] = novaEtapa;
 
-					
 				}
 				z++;
 			
-			
-
 			nProvasV++;
 		}
 
@@ -109,28 +100,47 @@ void ProvasValida(Prova provas[], Prova provasValidas[], int nConcorrentes, int 
 	}
 
 	printf("Numero de concorentes com uma prova valida: %d\n", nProvasV);
+	return nProvasV;
 }
 
-//Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida;
-void ListagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
+//Ex 4 - Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida
+void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 
-	int tempoTotal = 0, i = 0;
+	int tempoTotal = 0, i = 0, aux = 0;
+
+	for (int i = 0; i < nConcorrentes; i++) {
+
+		for (int k = 0; k < nEtapas; k++) {
+			printf("PV %d %s %s %d\n", provasValidas[i].etapas->idConcorrente, provasValidas[i].etapas[k].etapa1, provasValidas[i].etapas[k].etapa2, provasValidas[i].etapas[k].tempo);
+		}
+	}
 
 	//if (provasValidas[i].etapas->idConcorrente == i + 1) {
 
-		for ( i = 0; i < (nConcorrentes*nEtapas); i++) {
-
+		for (i = 0; i < nConcorrentes; i++) {
 			for (int j = 0; j < nEtapas; j++) {
-
+				
 				tempoTotal += provasValidas[i].etapas[j].tempo;
-
 			}
-			
+
 			provasValidas[i].tempoTotal = tempoTotal;
 			tempoTotal = 0;
-			printf("%d\n", provasValidas[i].tempoTotal);
-			i += nEtapas;
 		}
-
 	//}
+
+	//Ordena por ordem decrescente os tempos totais das provas
+	for (int cont = 1; cont < nConcorrentes; cont++) {
+		for (i = 0; i < nEtapas - 1; i++) {
+			if (provasValidas[i].tempoTotal < provasValidas[i + 1].tempoTotal) {
+				aux = provasValidas[i].tempoTotal;
+				provasValidas[i].tempoTotal = provasValidas[i + 1].tempoTotal;
+				provasValidas[i + 1].tempoTotal = aux;
+			}
+		}
+	}
+
+	printf("\nElementos do array em ordem decrescente:\n");
+	for (i = 0; i < nConcorrentes; i++) {
+		printf("%d\n", provasValidas[i].tempoTotal);
+	}
 }

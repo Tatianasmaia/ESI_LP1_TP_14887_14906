@@ -14,6 +14,8 @@ typedef struct distancia {
 	char inicio[3];
 	char fim[3];
 	float distancia;
+	int somaTempo;
+	float media;
 
 }Distancia;
 
@@ -32,6 +34,7 @@ typedef struct etapa {
 typedef struct prova {
 
 	int tempoTotal;
+	float velocidadeMedia;
 	Etapa etapas[3];
 
 }Prova;
@@ -45,12 +48,20 @@ typedef struct detalhesProva {
 
 }DetalhesProva;
 
+typedef struct tempoEtapa {
 
+	int tempo;
+	char etapa[3];
+
+}TempoEtapa;
 
 //Funções
 void leFicheiroConcorrentes(concorrentes);
 void leFicheiroEtapas(etapas);
 void leFicheiroProvas(provas, detalhes);
 
-void ProvasValida(provas, idProvasValidas, nConcorrentes, nEtapas);
-void ListagemTempoProva(idProvasValidas);
+int verificarProvasValidas(provas, provasValidas, nConcorrentesT, nEtapas);
+void listagemTempoProva(provasValidas, nEtapas, nConcorrentes);
+void concorrentesRapidos(provasValidas, nEtapas, nConcorrentes);
+void tempoMinimoProva(provas, etapas, nConcorrentes, nEtapas);
+void velocidadeMedia(provasValidas, etapas, nConcorrentes, nEtapas);

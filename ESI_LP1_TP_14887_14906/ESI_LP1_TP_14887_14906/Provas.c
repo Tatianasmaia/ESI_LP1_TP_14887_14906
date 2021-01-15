@@ -16,10 +16,10 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 	FILE* f = fopen("DadosProva.txt", "r");
 
 	fscanf(f, "%d;%d\n", &nEtapas, &nConcorrentes);
+
 	detalhes[0].nEtapas = nEtapas;
 	detalhes[0].nConcorrentes = nConcorrentes;
 
-	
 	
 	for (int i = 1; i <= nConcorrentes; i++)
 	{
@@ -47,12 +47,12 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 	fclose(f);
 
-	for (int i = 0; i < nConcorrentes; i++) {
+	/*for (int i = 0; i < nConcorrentes; i++) {
 
 		for (int k = 0; k < nEtapas; k++) {
 			printf("Aqui%d %s %s %d\n", provas[i].etapas->idConcorrente, provas[i].etapas[k].etapa1, provas[i].etapas[k].etapa2, provas[i].etapas[k].tempo);
 		}
-	}
+	}*/
 }
 
 //Concorrentes com prova válida (tempo > 0)
@@ -99,7 +99,6 @@ int verificarProvasValidas(Prova provas[], Prova provasValidas[], int nConcorren
 		k = 0;
 	}
 
-	printf("Numero de concorentes com uma prova valida: %d\n", nProvasV);
 	return nProvasV;
 }
 
@@ -108,12 +107,12 @@ void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 
 	int tempoTotal = 0, i = 0, aux = 0;
 
-	for (int i = 0; i < nConcorrentes; i++) {
+	/*for (int i = 0; i < nConcorrentes; i++) {
 
 		for (int k = 0; k < nEtapas; k++) {
 			printf("PV %d %s %s %d\n", provasValidas[i].etapas->idConcorrente, provasValidas[i].etapas[k].etapa1, provasValidas[i].etapas[k].etapa2, provasValidas[i].etapas[k].tempo);
 		}
-	}
+	}*/
 
 	//if (provasValidas[i].etapas->idConcorrente == i + 1) {
 
@@ -139,8 +138,13 @@ void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 		}
 	}
 
-	printf("\nElementos do array em ordem decrescente:\n");
+	printf("\nTempos de provas validas ordenados por ordem decrescente:\n");
 	for (i = 0; i < nConcorrentes; i++) {
 		printf("%d\n", provasValidas[i].tempoTotal);
 	}
+}
+
+//9 - Tabela classificativa da prova
+void tabelaClassificativa() {
+
 }

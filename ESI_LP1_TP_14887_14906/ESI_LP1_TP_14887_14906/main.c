@@ -16,70 +16,91 @@ void main() {
 
         
     //Funções para ler os três ficheiros
-    //leFicheiroConcorrentes(concorrentes);
+    leFicheiroConcorrentes(concorrentes);
     leFicheiroEtapas(etapas);
     leFicheiroProvas(provas, detalhes);
     
+    //Atribuição do número de etapas e concorrentes às respetivas variáveis
     nEtapas = detalhes[0].nEtapas;
     nConcorrentesT = detalhes[0].nConcorrentes;
 
-    //Verifica as provas válidas
+    //Função que verifica as provas válidas e retorna o número de concorrentes que efetuaram uma prova válida
     nConcorrentesPV = verificarProvasValidas(provas, provasValidas, nConcorrentesT, nEtapas);
 
     //Menu
-   /* opcao = menu();
+    do {
+        opcao = menu();
 
-    switch (opcao)
-    {
-    case 2:
+        switch (opcao)
+        {
+        case 2:
+            system("cls");
+            printf("\nNumero de concorrentes em prova: %d\n", nConcorrentesT);
+            
+            break;
 
-        printf("Numero de concorrentes em prova: %d", nConcorrentesT);
-        break;
+        case 3:
+            system("cls");
+            printf("\nNumero de concorrentes que efetuaram uma prova valida: %d\n", nConcorrentesPV);
+           
+            break;
 
-    case 3:
+        case 4:
+            system("cls");
+            listagemTempoProva(provasValidas, nEtapas, nConcorrentesPV);
+            break;
 
-        printf("Numero de concorrentes que efetuaram uma prova valida: %d", nConcorrentesPV);
-        break;
+        case 5:
+            system("cls");
+            mediaEtapas(provasValidas, etapas, nEtapas, nConcorrentesPV);
+            break;
+        
+        case 6:
+            system("cls");
+            concorrenteRapidoLento(provasValidas, nEtapas, nConcorrentesPV);
+            break;
 
-    default:
-        break;
-    }*/
+        case 7:
+            system("cls");
+            tempoMinimoProva(provas, nConcorrentesT, nEtapas);
+            break;
 
-    //Exercício 4
-    listagemTempoProva(provasValidas, nEtapas, nConcorrentesPV);
+        case 8:
+            system("cls");
+            velocidadeMedia(provasValidas, etapas, nConcorrentesT, nEtapas);
+            break;
 
-    ////Exercício 5
-    mediaEtapas(provasValidas, etapas, nEtapas, nConcorrentesPV);
+        case 9:
+            system("cls");
 
+            break;
+
+        default:
+            printf("\bEscolha uma opcao valida!");
+            break;
+        }
+    } while (opcao != 1);
     
-    ////Exercício 6 - Apresentação do concorrente mais rápido / mais lento a efetuar uma prova válida
-    //concorrentesRapidos(provasValidas, nEtapas, nConcorrentesPV);
-
-    //exercicio 7
-    tempoMinimoProva(provas, etapas, nConcorrentesT, nEtapas);
-    velocidadeMedia(provasValidas, etapas, nConcorrentesT, nEtapas);
     
-    //Exercício 2
-    //printf("%d\n", nEtapas);
-   
 }
 
 int menu() {
+
     int opcao = -1;
 
-    //do {
+    printf("\n-----Menu-----\n");
+    printf("\n1 - Sair");
+    printf("\n2 - Numero de concorrentes em prova");
+    printf("\n3 - Numero de concorrentes que efetuaram uma prova valida");
+    printf("\n4 - Listagem (por ordem decrescente) dos tempos de cada prova valida");
+    printf("\n5 - Listagem das medias dos tempos de cada etapa (utilizando tempos de provas validas)");
+    printf("\n6 - Apresentacao do concorrente mais rapido e do mais lento (que efetuaram provas validas). E necessario executar a opcao 4 primeiro");
+    printf("\n7 - Menor tempo em que e possivel efetuar uma prova na totalidade");
+    printf("\n8 - Listagem (por ordem decrescente) das velocidades medias de toda a prova");
+    printf("\n9 - Tabela classificativa da prova");
+    printf("\n\nOpcao: ");
 
-        printf("-----Menu-----");
-        printf("\n1 - Sair");
-        printf("\n2 - Numero de concorrentes em prova");
-        printf("\n3 - Numero de concorrentes que efetuaram uma prova valida");
-        printf("\n4 - Listagem (ordenada por ordem decrescente) dos tempos de cada prova valida");
-        printf("\n5 - Listagem das medias dos tempos de cada etapa (utilizando tempos de provas validas)");
-        printf("\n6 - Apresentacao do concorrente mais rapido e do mais lento (que efetuaram provas validas)");
-        printf("\n7 - ");
-
-        scanf("%d", &opcao);
-    //} while (opcao != 1);
+    scanf("%d", &opcao);
        
-        return opcao;
+    return opcao;
 }

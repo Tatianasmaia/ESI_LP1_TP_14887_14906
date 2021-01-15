@@ -25,13 +25,14 @@ void leFicheiroConcorrentes(Concorrente concorrentes[]) {
     }
     fclose(f);
 
-    for (int i = 0; i < j; i++) {
+    /*for (int i = 0; i < j; i++) {
         printf("%d %s %s\n", concorrentes[i].id, concorrentes[i].nome, concorrentes[i].marca);
-    }
+    }*/
 }
 
 //Exercício 6 - Apresentação do concorrente mais rápido e mais lento a efetuar uma prova válida
-void concorrentesRapidos(Prova provasValidas[], int nEtapas, int nConcorrentes) {
+//Nota: É necessário executar primeiro a função listagemTempoProva() pois é nessa função que são atribuídos os valores à variável "tempoTotal" de cada concorrente
+void concorrenteRapidoLento(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 
 	int maiorTempo, menorTempo;
 
@@ -56,6 +57,7 @@ void concorrentesRapidos(Prova provasValidas[], int nEtapas, int nConcorrentes) 
 	printf("Tempo menor: %d", menorTempo);
 }
 
+//8 - Calculo das velocidades medias de toda a prova
 void velocidadeMedia(Prova provasValidas[], Distancia etapas[], int nConcorrentes, int nEtapas) {
 
 	int distanciaTotal = 0;
@@ -71,7 +73,7 @@ void velocidadeMedia(Prova provasValidas[], Distancia etapas[], int nConcorrente
 
 	for (int j = 0; j < nConcorrentes; j++) {
 		provasValidas[j].velocidadeMedia = (float)distanciaTotal / provasValidas[j].tempoTotal;
-		printf("\nVelocidade media do concorrente %d: %f", provasValidas[j].etapas[j].idConcorrente, provasValidas[j].velocidadeMedia);
+		printf("\nVelocidade media do concorrente %d: %.2f", provasValidas[j].etapas[j].idConcorrente, provasValidas[j].velocidadeMedia);
 	}
 
 }

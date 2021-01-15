@@ -48,6 +48,7 @@ typedef struct detalhesProva {
 
 }DetalhesProva;
 
+/*Estrutura para guardar o tempo minimo de cada etapa*/
 typedef struct tempoEtapa {
 
 	int tempo;
@@ -62,6 +63,6 @@ void leFicheiroProvas(provas, detalhes);
 
 int verificarProvasValidas(provas, provasValidas, nConcorrentesT, nEtapas);
 void listagemTempoProva(provasValidas, nEtapas, nConcorrentes);
-void concorrentesRapidos(provasValidas, nEtapas, nConcorrentes);
-void tempoMinimoProva(provas, etapas, nConcorrentes, nEtapas);
+void concorrenteRapidoLento(provasValidas, nEtapas, nConcorrentes);
+void tempoMinimoProva(provas, nConcorrentes, nEtapas);
 void velocidadeMedia(provasValidas, etapas, nConcorrentes, nEtapas);

@@ -3,7 +3,7 @@
 #include "Header.h"
 #pragma warning(disable : 4996)
 
-///*Função que lê o ficheiro com a informação das distâncias das etapas*/
+/*Função que lê o ficheiro com a informação das distâncias das etapas*/
 void leFicheiroEtapas(Distancia etapas[]) {
 
 	char inicio[3], fim[3];
@@ -53,43 +53,45 @@ void mediaEtapas(Prova provasValidas[], Distancia etapas[], int nEtapas, int nCo
 		etapas[i].media = (float)etapas[i].somaTempo / nEtapas;
 	}
 
-
+	//Mostra na consola a media de cada etapa por ordem de ocorrência de etapas
 	for (int i = 0; i < nEtapas; i++) {
 
 		if (strcmp(etapas[i].inicio, "P") == 0) {
-			printf("Media etapa %s - %s: %f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
+			printf("Media do tempo da etapa %s - %s: %.2f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
 		}
 	}
 
 	for (int i = 0; i < nEtapas; i++) {
 
 		if (strcmp(etapas[i].inicio, "E1") == 0) {
-			printf("Media etapa %s - %s: %f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
+			printf("Media do tempo da etapa %s - %s: %.2f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
 		}
 	}
 
 	for (int i = 0; i < nEtapas; i++) {
 
 		if (strcmp(etapas[i].inicio, "E2") == 0) {
-			printf("Media etapa %s - %s: %f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
+			printf("Media do tempo da etapa %s - %s: %.2f \n", etapas[i].inicio, etapas[i].fim, etapas[i].media);
 		}
 	}
 }
 
-//Calcula o tempo minimo de cada etapa
-void tempoMinimoProva(Prova provas[], Distancia etapas[], int nConcorrentes, int nEtapas) {
+//7 - Calcula o tempo minimo de cada etapa para uma prova
+void tempoMinimoProva(Prova provas[], int nConcorrentes, int nEtapas) {
 
+	//Declaração e inicialização de varáveis
 	TempoEtapa somaEtapas[3] = { 0 };
 	int soma = 0;
 	int tempoMenor = 100000;
 
+	//Percorre o array somaEtapas e atribui os valores do tempo e do nome da etapa das primeiras três etapas
 	for (int i = 0; i < nEtapas; i++) {
 		somaEtapas[i].tempo = provas[0].etapas[i].tempo;
 		strcpy(somaEtapas[i].etapa, provas[0].etapas[i].etapa1);
 
 	}
 
-
+	//Percorre os arrays e verifica o menor tempo de cada etapa
 	for (int i = 0; i < nConcorrentes; i++) {
 		for (int j = 0; j < nEtapas; j++) {
 			for (int k = 0; k < nEtapas; k++) {
@@ -106,11 +108,10 @@ void tempoMinimoProva(Prova provas[], Distancia etapas[], int nConcorrentes, int
 		}
 	}
 
+	//Percorre o array das etapas e soma os valores minimos de cada etapa
 	for (int i = 0; i < nEtapas; i++) {
 		soma = soma + somaEtapas[i].tempo;
-		printf("\nTempo minimo de uma prova: %d", somaEtapas[i].tempo);
 	}
 
-
-	printf("Tempo minimo de uma prova: %d", soma);
+	printf("Tempo minimo de uma prova: %d\n", soma);
 }

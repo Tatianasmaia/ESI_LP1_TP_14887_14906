@@ -89,20 +89,18 @@ int verificarProvasValidas(Prova provas[], Prova provasValidas[], int nConcorren
 					novaEtapa.tempo = provas[i].etapas[j].tempo;
 
 					provasValidas[z].etapas[j] = novaEtapa;
-
 				}
 				z++;
 			
 			nProvasV++;
 		}
-
 		k = 0;
 	}
 
 	return nProvasV;
 }
 
-//Ex 4 - Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida
+//Exercício 4 - Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida
 void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 
 	int tempoTotal = 0, i = 0, aux = 0;

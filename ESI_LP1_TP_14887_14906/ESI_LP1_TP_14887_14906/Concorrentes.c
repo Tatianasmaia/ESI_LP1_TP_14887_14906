@@ -57,7 +57,7 @@ void concorrenteRapidoLento(Prova provasValidas[], int nEtapas, int nConcorrente
 	printf("Tempo menor: %d", menorTempo);
 }
 
-//8 - Calculo das velocidades medias de toda a prova
+//Exercício 8 - Calculo das velocidades medias de toda a prova
 void velocidadeMedia(Prova provasValidas[], Distancia etapas[], int nConcorrentes, int nEtapas) {
 
 	int distanciaTotal = 0;

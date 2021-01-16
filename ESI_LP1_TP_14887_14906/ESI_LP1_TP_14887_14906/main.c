@@ -12,7 +12,8 @@ void main() {
     Concorrente concorrentes[10];
     Prova provas[10] = { 0 };
     DetalhesProva detalhes[1] = { 0 };
-    Prova provasValidas[30] = { 0 };
+    Prova provasValidas[10] = { 0 };
+    ProvasInvalidas provasInvalidas[10] = { 0 };
 
         
     //Funções para ler os três ficheiros
@@ -25,7 +26,7 @@ void main() {
     nConcorrentesT = detalhes[0].nConcorrentes;
 
     //Função que verifica as provas válidas e retorna o número de concorrentes que efetuaram uma prova válida
-    nConcorrentesPV = verificarProvasValidas(provas, provasValidas, nConcorrentesT, nEtapas);
+    nConcorrentesPV = verificarProvasValidas(provas, provasValidas, provasInvalidas, nConcorrentesT, nEtapas);
 
     //Menu
     do {
@@ -67,12 +68,12 @@ void main() {
 
         case 8:
             system("cls");
-            velocidadeMedia(provasValidas, etapas, nConcorrentesT, nEtapas);
+            velocidadeMedia(provasValidas, etapas, nConcorrentesPV, nEtapas);
             break;
 
         case 9:
             system("cls");
-
+            tabelaClassificativa(concorrentes, provasValidas, provasInvalidas, nConcorrentesT, nConcorrentesPV, nEtapas);
             break;
 
         default:
@@ -93,11 +94,11 @@ int menu() {
     printf("\n2 - Numero de concorrentes em prova");
     printf("\n3 - Numero de concorrentes que efetuaram uma prova valida");
     printf("\n4 - Listagem (por ordem decrescente) dos tempos de cada prova valida");
-    printf("\n5 - Listagem das medias dos tempos de cada etapa (utilizando tempos de provas validas)");
+    printf("\n5 - Listagem das medias dos tempos de cada etapa (utilizando tempos de provas validas). E necessario executar a opcao 4 primeiro");
     printf("\n6 - Apresentacao do concorrente mais rapido e do mais lento (que efetuaram provas validas). E necessario executar a opcao 4 primeiro");
     printf("\n7 - Menor tempo em que e possivel efetuar uma prova na totalidade");
     printf("\n8 - Listagem (por ordem decrescente) das velocidades medias de toda a prova");
-    printf("\n9 - Tabela classificativa da prova");
+    printf("\n9 - Tabela classificativa da prova. E necessario executar a opcao 4 primeiro");
     printf("\n\nOpcao: ");
 
     scanf("%d", &opcao);

@@ -1,6 +1,2 @@
-﻿  Etapas.c
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Etapas.c(67,11): warning C4477: 'printf' : format string '%.2f' requires an argument of type 'double', but variadic argument 3 has type 'char *'
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Etapas.c(67,95): warning C4474: 'printf' : too many arguments passed for format string
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Etapas.c(67,95): message : placeholders and their parameters expect 3 variadic arguments, but 5 were provided
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Etapas.c(36,8): warning C4101: 'media': unreferenced local variable
+﻿  Provas.c
   ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

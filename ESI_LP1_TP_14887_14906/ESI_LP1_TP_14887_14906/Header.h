@@ -56,6 +56,26 @@ typedef struct tempoEtapa {
 
 }TempoEtapa;
 
+typedef struct leaderBoard {
+
+	int rank;
+	int id;
+	char nome[20];
+	char marca[20];
+	int tempoProva;
+	int difAnterior;
+	int difLider;
+
+}LeaderBoard;
+
+typedef struct provasInvalidas {
+
+	int id;
+	char nome[20];
+	char marca[20];
+}ProvasInvalidas;
+
+
 //Funções
 void leFicheiroConcorrentes(concorrentes);
 void leFicheiroEtapas(etapas);
@@ -66,3 +86,4 @@ void listagemTempoProva(provasValidas, nEtapas, nConcorrentes);
 void concorrenteRapidoLento(provasValidas, nEtapas, nConcorrentes);
 void tempoMinimoProva(provas, nConcorrentes, nEtapas);
 void velocidadeMedia(provasValidas, etapas, nConcorrentes, nEtapas);
+void guardarLeaderBoard(concorrente, provasInvalidas, nConcorrentesPI, nConcorrentesPV);

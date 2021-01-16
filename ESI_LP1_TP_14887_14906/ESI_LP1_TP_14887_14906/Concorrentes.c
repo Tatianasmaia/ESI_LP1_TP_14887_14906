@@ -7,10 +7,16 @@
 void leFicheiroConcorrentes(Concorrente concorrentes[]) {
 
     char nome[50], marca[50];
-    int id;
+    int id, j = 0;
 
     FILE* f = fopen("DadosConcorrentes.txt", "r");
-    int j = 0;
+
+	if (f == NULL)
+	{
+		printf("Erro na abertura do ficheiro\n");
+		return;
+	}
+    
 
     while (!feof(f)) {
 
@@ -36,6 +42,7 @@ void concorrenteRapidoLento(Prova provasValidas[], int nEtapas, int nConcorrente
 
 	int maiorTempo, menorTempo;
 
+	//Atriubui o tempo total da posição 0 do array de provasValidas às variáveis
 	maiorTempo = provasValidas[0].tempoTotal;
 	menorTempo = provasValidas[0].tempoTotal;
 
@@ -53,8 +60,8 @@ void concorrenteRapidoLento(Prova provasValidas[], int nEtapas, int nConcorrente
 		}
 	}
 
-	printf("Tempo maior: %d", maiorTempo);
-	printf("Tempo menor: %d", menorTempo);
+	printf("Tempo do concorrente mais rapido: %d\n", maiorTempo);
+	printf("Tempo do concorrente mais lento: %d\n", menorTempo);
 }
 
 //Exercício 8 - Calculo das velocidades medias de toda a prova
@@ -62,18 +69,19 @@ void velocidadeMedia(Prova provasValidas[], Distancia etapas[], int nConcorrente
 
 	int distanciaTotal = 0;
 
+	//Soma a distância total da prova
 	for (int i = 0; i < nEtapas; i++) {
 		distanciaTotal += etapas[i].distancia;
 	}
 
-	//Conversão de milisegundos para segundos
+	//Conversão de milisegundos para minutos dos tempos totais
 	for (int i = 0; i < nEtapas; i++) {
 		provasValidas[i].tempoTotal = provasValidas[i].tempoTotal / 3600;
 	}
 
+	//Calcula a velocidade média dos concorrentes
 	for (int j = 0; j < nConcorrentes; j++) {
 		provasValidas[j].velocidadeMedia = (float)distanciaTotal / provasValidas[j].tempoTotal;
 		printf("\nVelocidade media do concorrente %d: %.2f", provasValidas[j].etapas[j].idConcorrente, provasValidas[j].velocidadeMedia);
 	}
-
 }

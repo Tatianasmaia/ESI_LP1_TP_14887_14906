@@ -8,10 +8,16 @@ void leFicheiroEtapas(Distancia etapas[]) {
 
 	char inicio[3], fim[3];
 	float distancia;
+	int j = 0;
 
 	FILE* f = fopen("DistanciaEtapas.txt", "r");
 
-    int j = 0;
+	if (f == NULL)
+	{
+		printf("Erro na abertura do ficheiro\n");
+		return;
+	}
+    
 	while (!feof(f)) {
 
 		fscanf(f, "%[^;];%[^;];%f\n", inicio, fim, &distancia);
@@ -88,7 +94,6 @@ void tempoMinimoProva(Prova provas[], int nConcorrentes, int nEtapas) {
 	for (int i = 0; i < nEtapas; i++) {
 		somaEtapas[i].tempo = provas[0].etapas[i].tempo;
 		strcpy(somaEtapas[i].etapa, provas[0].etapas[i].etapa1);
-
 	}
 
 	//Percorre os arrays e verifica o menor tempo de cada etapa

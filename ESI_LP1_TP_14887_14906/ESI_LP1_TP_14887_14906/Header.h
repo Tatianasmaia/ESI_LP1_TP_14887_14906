@@ -56,6 +56,7 @@ typedef struct tempoEtapa {
 
 }TempoEtapa;
 
+/*Estrutura para guadar os concorrentes para a leaderboard*/
 typedef struct leaderBoard {
 
 	int rank;
@@ -68,12 +69,20 @@ typedef struct leaderBoard {
 
 }LeaderBoard;
 
+/*Estrutura para guardar as provas inválidas*/
 typedef struct provasInvalidas {
 
 	int id;
 	char nome[20];
 	char marca[20];
+
 }ProvasInvalidas;
+
+/*Estrutura para guardar os tempos totais de provas ordenados*/
+typedef struct ordenarTempos {
+	int id;
+	int tempoTotal;
+}OrdenarTempos;
 
 
 //Funções
@@ -81,9 +90,12 @@ void leFicheiroConcorrentes(concorrentes);
 void leFicheiroEtapas(etapas);
 void leFicheiroProvas(provas, detalhes);
 
-int verificarProvasValidas(provas, provasValidas, nConcorrentesT, nEtapas);
-void listagemTempoProva(provasValidas, nEtapas, nConcorrentes);
-void concorrenteRapidoLento(provasValidas, nEtapas, nConcorrentes);
-void tempoMinimoProva(provas, nConcorrentes, nEtapas);
-void velocidadeMedia(provasValidas, etapas, nConcorrentes, nEtapas);
-void guardarLeaderBoard(concorrente, provasInvalidas, nConcorrentesPI, nConcorrentesPV);
+int verificarProvasValidas(provas, provasValidas, provasInvalidas, nConcorrentesT, nEtapas);
+void listagemTempoProva(provasValidas, nEtapas, nConcorrentesPV);
+void mediaEtapas(provasValidas, etapas, nEtapas, nConcorrentesPV);
+void concorrenteRapidoLento(provasValidas, nEtapas, nConcorrentesPV);
+void tempoMinimoProva(provas, nConcorrentesT, nEtapas);
+void velocidadeMedia(provasValidas, etapas, nConcorrentesPV, nEtapas);
+void tabelaClassificativa(concorrentes, provasValidas, provasInvalidas, nConcorrentesT, nConcorrentesPV, nEtapas);
+
+void guardarLeaderBoard(LeaderBoard concorrente[], ProvasInvalidas provasInvalidas[], int nConcorrentesPI, int nConcorrentesPV);

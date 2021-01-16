@@ -15,33 +15,41 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 
 	FILE* f = fopen("DadosProva.txt", "r");
 
+	if (f == NULL)
+	{
+		printf("Erro na abertura do ficheiro\n");
+		return;
+	}
+
+	//Lê a primeira linha do ficheiro
 	fscanf(f, "%d;%d\n", &nEtapas, &nConcorrentes);
 
 	detalhes[0].nEtapas = nEtapas;
 	detalhes[0].nConcorrentes = nConcorrentes;
 
 	
-	for (int i = 1; i <= nConcorrentes; i++)
+	for (int i = 0; i < nConcorrentes; i++)
 	{
 
 		while (!feof(f)) {
 
 			fscanf(f, "%d;%[^;];%[^;];%d\n", &idConcorrente, etapa1, etapa2, &tempo);
 
-			if (idConcorrente == i)
+			if (idConcorrente == i+1)
 			{
 				novaEtapa.idConcorrente = idConcorrente;
 				strcpy(novaEtapa.etapa1, etapa1);
 				strcpy(novaEtapa.etapa2, etapa2);
 				novaEtapa.tempo = tempo;
 
-				provas[i-1].etapas[j] = novaEtapa;
+				provas[i].etapas[j] = novaEtapa;
 
 				j++;
 			}
 		}
 		j = 0;
 		
+		//Percorre o ficheiro para todos os id's
 		fseek(f, 2, SEEK_SET);
 	}
 
@@ -55,14 +63,14 @@ void leFicheiroProvas(Prova provas[], DetalhesProva detalhes[]) {
 	}*/
 }
 
-//Concorrentes com prova válida (tempo > 0)
+//Verifica os concorrentes com prova válida (tempo > 0)
 int verificarProvasValidas(Prova provas[], Prova provasValidas[], ProvasInvalidas provasInvalidas[], int nConcorrentesT, int nEtapas) {
 
 
 	int k = 0, z = 0, l = 0, nProvasV = 0;
 	Etapa novaEtapa;
 
-
+	//Percorre o array de provas
 	for (int i = 0 ; i < nConcorrentesT; i++) {
 
 		//Calcula se todas as provas são válidas
@@ -94,8 +102,10 @@ int verificarProvasValidas(Prova provas[], Prova provasValidas[], ProvasInvalida
 			
 			nProvasV++;
 		}
+		//Caso a prova seja inválida
 		else{
 
+			//Percorre o array de provas inválidas e atribui os id's dos concorrentes com prova inválida
 			for (int j = 0; j < nEtapas; j++) {
 
 				provasInvalidas[l].id = provas[i].etapas[j].idConcorrente;
@@ -113,16 +123,11 @@ int verificarProvasValidas(Prova provas[], Prova provasValidas[], ProvasInvalida
 //Exercício 4 - Listagem, ordenada por ordem decrescente de tempo da prova, de todos os concorrentes que efetuaram uma prova válida
 void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 
-	int tempoTotal = 0, i = 0, aux = 0;
+	OrdenarTempos temposOrdenados[10] = { 0 };
+	int tempoTotal = 0, i = 0, auxId = 0, auxTempo = 0;
 
-	/*for (int i = 0; i < nConcorrentes; i++) {
-
-		for (int k = 0; k < nEtapas; k++) {
-			printf("PV %d %s %s %d\n", provasValidas[i].etapas->idConcorrente, provasValidas[i].etapas[k].etapa1, provasValidas[i].etapas[k].etapa2, provasValidas[i].etapas[k].tempo);
-		}
-	}*/
-
-	//Percorre o array de provasValidas para calcular o tempo total de uma prova
+	
+	//Percorre o array de provasValidas para calcular o tempo total das provas
 	for (i = 0; i < nConcorrentes; i++) {
 		for (int j = 0; j < nEtapas; j++) {
 				
@@ -130,25 +135,41 @@ void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 		}
 
 		provasValidas[i].tempoTotal = tempoTotal;
-		//printf("%d %d\n", provasValidas[i].etapas[i].idConcorrente, provasValidas[i].tempoTotal);
 		tempoTotal = 0;
 	}
-	
+
+	//Atribuição de valores ao array temposOrdenados
+	for (int i = 0; i < nConcorrentes; i++) {
+
+		temposOrdenados[i].id = provasValidas[i].etapas[i].idConcorrente;
+		temposOrdenados[i].tempoTotal = provasValidas[i].tempoTotal;
+
+	}
 
 	//Ordena por ordem decrescente os tempos totais das provas
-	for (int cont = 1; cont < nConcorrentes; cont++) {
-		for (i = 0; i < nEtapas - 1; i++) {
-			if (provasValidas[i].tempoTotal < provasValidas[i + 1].tempoTotal) {
-				aux = provasValidas[i].tempoTotal;
-				provasValidas[i].tempoTotal = provasValidas[i + 1].tempoTotal;
-				provasValidas[i + 1].tempoTotal = aux;
+	for (int i = 0; i < nConcorrentes; i++) {
+		for (int j = i + 1; j < nConcorrentes; j++) {
+
+			if (temposOrdenados[i].tempoTotal < temposOrdenados[j].tempoTotal) {
+
+				auxId = temposOrdenados[i].id;
+				auxTempo = temposOrdenados[i].tempoTotal;
+
+
+				temposOrdenados[i].tempoTotal = temposOrdenados[j].tempoTotal;
+				temposOrdenados[i].id = temposOrdenados[j].id;
+
+				temposOrdenados[j].tempoTotal = auxTempo;
+				temposOrdenados[j].id = auxId;
+
 			}
 		}
 	}
 
+	
 	printf("\nTempos de provas validas ordenados por ordem decrescente:\n");
 	for (i = 0; i < nConcorrentes; i++) {
-		printf("%d %d\n", provasValidas[i].etapas[i].idConcorrente, provasValidas[i].tempoTotal);
+		printf("%d %d\n", temposOrdenados[i].id, temposOrdenados[i].tempoTotal);
 	}
 }
 
@@ -156,12 +177,10 @@ void listagemTempoProva(Prova provasValidas[], int nEtapas, int nConcorrentes) {
 void tabelaClassificativa(Concorrente concorrentes[], Prova provasValidas[], ProvasInvalidas provasInvalidas[], int nConcorrentesT, int nConcorrentesPV, int nEtapas) {
 
 	LeaderBoard concorrente[10] = { 0 };
-	int m = nConcorrentesT; //linhas
-	int n=7; //colunas
 	int auxId, auxTempo, nConcorrentesPI;
 	char auxNome[20], auxMarca[20];
 
-	//Atribui ao array concorrente os concorrentes do ar
+	//Atribuição de valores ao array concorrente 
 	for (int i = 0; i < nConcorrentesPV; i++) {
 		
 		if (provasValidas[i].etapas[i].idConcorrente == concorrentes[i].id) {
@@ -197,16 +216,17 @@ void tabelaClassificativa(Concorrente concorrentes[], Prova provasValidas[], Pro
 
 			}
 		}
-
 	}
 
+	//Atribui a posicao do concorrente a cada concorrente de acordo com o seu tempo de prova
 	for (int i = 0; i < nConcorrentesPV; i++) {
 		concorrente[i].rank = i + 1;
 	}
 
+	//Calculo do número de concorrentes com prova inválida
 	nConcorrentesPI = nConcorrentesT - nConcorrentesPV;
 
-	//Atribui a informação dos concorrentes com provas inválidas de acordo com o seu id
+	//Atribui a informação dos concorrentes (nome e marca) com provas inválidas de acordo com o seu id
 	for (int i = 0; i < nConcorrentesPI ; i++) {
 		for (int j = 0; j < nConcorrentesT; j++) {
 			if (provasInvalidas[i].id == concorrentes[j].id) {
@@ -216,7 +236,7 @@ void tabelaClassificativa(Concorrente concorrentes[], Prova provasValidas[], Pro
 		}
 	}
 
-	//Ordena os ids dos concorrentes com a prova inválida
+	//Ordena os ids dos concorrentes com a prova inválida (por ordem crescente)
 	for (int i = 0; i < nConcorrentesPI; i++) {
 		for (int j = i + 1; j < nConcorrentesPI; j++) {
 
@@ -239,44 +259,49 @@ void tabelaClassificativa(Concorrente concorrentes[], Prova provasValidas[], Pro
 
 	}
 
-
+	//Percorre o array concorrente para calcular a diferença do tempo de prova com o concorrente anterior
 	for (int i = 1; i <= nConcorrentesPV; i++) {
 		
 		concorrente[i].difAnterior = concorrente[i].tempoProva - concorrente[i-1].tempoProva;
 	}
+
+	//Percorre o array concorrente para calcular a diferença do tempo de prova com o concorrente em primeiro lugar
 	for (int i = 1; i <= nConcorrentesPV; i++) {
 
 		concorrente[i].difLider = concorrente[i].tempoProva - concorrente[0].tempoProva;
 	}
 
-	//Printf da tabela
+	//Mostra a tabela na consola
 	printf("Posicao | Numero | Nome | Carro | Tempo de Prova | Di. Ant. | Di. Ldr.\n");
 
+	//Percorre e mostra o array concorrente (que contém apenas concorrentes com prova válida)
 	for (int i = 0; i < nConcorrentesPV; i++) {
 		printf(" %d | %d | %s | %s | %d | %d | %d\n", concorrente[i].rank, concorrente[i].id, concorrente[i].nome, concorrente[i].marca, concorrente[i].tempoProva, concorrente[i].difAnterior, concorrente[i].difLider);
 	}
-
+	//Percorre e mostra o array com os concorrentes com provas inválidas
 	for (int i = 0; i < nConcorrentesPI; i++) {
 		printf("   | %d | %s | %s | \n", provasInvalidas[i].id, provasInvalidas[i].nome, provasInvalidas[i].marca);
 	}
+
+	//Função que guarda num ficheiro binário os concorrentes com provas válidas e inválidas
 	guardarLeaderBoard(concorrente, provasInvalidas, nConcorrentesPI, nConcorrentesPV);
 }
 
+//Função que guarda num ficheiro binário os concorrentes com provas válidas e inválidas
 void guardarLeaderBoard(LeaderBoard concorrente[], ProvasInvalidas provasInvalidas[], int nConcorrentesPI, int nConcorrentesPV)
 {
 
 	FILE* f;
 
-	
 	f = fopen("LeaderBoard.bin", "wb"); 
 	
-
 	if (f == NULL) 
 	{
 		printf("Erro na abertura do ficheiro\n");
 		return;
 	}
 	
+	//Escreve no ficheiro
 	fwrite(&concorrente, sizeof(LeaderBoard), nConcorrentesPV, f);
 	fwrite(&provasInvalidas, sizeof(ProvasInvalidas), nConcorrentesPI, f);
 

@@ -1,3 +1,10 @@
 ﻿  Concorrentes.c
-C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Concorrentes.c(72,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-  ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe
+C:\Users\tatia\OneDrive\IPCA\1 Semestre\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Concorrentes.c(74,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  Etapas.c
+C:\Users\tatia\OneDrive\IPCA\1 Semestre\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Etapas.c(42,8): warning C4101: 'media': unreferenced local variable
+  main.c
+C:\Users\tatia\OneDrive\IPCA\1 Semestre\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(33,21): warning C4013: 'menu' undefined; assuming extern returning int
+C:\Users\tatia\OneDrive\IPCA\1 Semestre\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\main.c(38,19): warning C4013: 'system' undefined; assuming extern returning int
+  Provas.c
+  Generating Code...
+  ESI_LP1_TP_14887_14906.vcxproj -> C:\Users\tatia\OneDrive\IPCA\1 Semestre\LP1\Trabalho\LP1_TP_14887_14906\ESI_LP1_TP_14887_14906\Debug\ESI_LP1_TP_14887_14906.exe

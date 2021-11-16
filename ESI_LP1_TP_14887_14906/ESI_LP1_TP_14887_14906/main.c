@@ -77,7 +77,7 @@ void main() {
             break;
 
         default:
-            printf("\bEscolha uma opcao valida!");
+            printf("\nEscolha uma opcao valida!");
             break;
         }
     } while (opcao != 1);
